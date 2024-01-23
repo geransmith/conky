@@ -61,7 +61,7 @@ while getopts "tp:h" opt; do
 done
 shift "$((OPTIND - 1))"
 
-if [[ "$toggle_mode" == "Y" ]]; then 
+if [ $toggle_mode == "Y" ]; then 
     toggle_conky
 else
     restart_conky
