@@ -1,7 +1,7 @@
 #!/bin/sh
 # vim: ft=sh:ts=4:sw=4:et:ai:cin
 
-conky_bin="conky"
+conky_bin="$HOME/Applications/conky-x86_64_31359f305cc885bdd81f445a7400cb22.AppImage"
 config_file=$(dirname $0)/"conky.conf"
 magic_id=$(md5sum "$config_file" | cut -c -12)
 toggle_mode="N"
