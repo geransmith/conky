@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # vim: ft=sh:ts=4:sw=4:et:ai:cin
 
 conky_bin="$HOME/Applications/conky-x86_64_31359f305cc885bdd81f445a7400cb22.AppImage"
@@ -36,8 +36,8 @@ restart_conky() {
 
 while getopts "tp:h" opt; do
     case $opt in
-    t) # toggle mode on
-        toggle_mode="Y"
+    t) # toggle mode off
+        toggle_mode="N"
         ;;
     p) # path to conky binary
         conky_bin=$(realpath -- "$OPTARG")
@@ -61,20 +61,10 @@ while getopts "tp:h" opt; do
 done
 shift "$((OPTIND - 1))"
 
-if [ $toggle_mode == "Y" ]; then 
+if [ $toggle_mode == "N" ]; then
     toggle_conky
 else
     restart_conky
 fi
 
 exit 0
-
-
-
-
-
-
-
-
-
-
