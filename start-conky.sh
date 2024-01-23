@@ -4,7 +4,7 @@
 conky_bin="$HOME/Applications/conky-x86_64_31359f305cc885bdd81f445a7400cb22.AppImage"
 config_file=$(dirname $0)/"conky.conf"
 magic_id=$(md5sum "$config_file" | cut -c -12)
-toggle_mode="N"
+toggle_mode="Y"
 
 usage() {
     echo "USAGE: $(basename $0) [-t] [-p]"
@@ -34,7 +34,7 @@ restart_conky() {
     start_conky
 }
 
-while getopts "tp:h" opt; do
+while getopts "p:tsrh" opt; do
     case $opt in
     t) # toggle mode off
         toggle_mode="N"
@@ -48,6 +48,12 @@ while getopts "tp:h" opt; do
             usage
             exit 1
         fi
+        ;;
+    s) # stop conky
+        stop_conky
+        ;;
+    r) # restart conky
+        restart_conky
         ;;
     h) # help
         usage
